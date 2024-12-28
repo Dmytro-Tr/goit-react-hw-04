@@ -1,23 +1,31 @@
-const SearchBar = () => {
+import { useState } from "react";
+
+const SearchBar = ({ onHandleChangeQuery }) => {
+  const [value, setValue] = useState("");
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    const form = evt.target;
-    // const topic = form.elements.topic.value;
-    // onSearch(topic);
-    form.reset();
-    console.log(form);
+    onHandleChangeQuery(value);
+    // console.log(value);
   };
 
   return (
     <header>
       <form onSubmit={handleSubmit}>
         <input
+          onChange={(evt) => setValue(evt.target.value)}
+          value={value}
           type="text"
-          // autocomplete="off"
-          // autofocus
+          autoComplete="off"
+          autoFocus
           placeholder="Search images and photos"
         />
-        <button type="submit">Search</button>
+        <button
+          onClick={handleSubmit}
+          type="submit"
+        >
+          Search
+        </button>
       </form>
     </header>
   );
