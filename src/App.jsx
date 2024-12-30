@@ -6,6 +6,7 @@ import Loader from "./components/loader/Loader";
 import LoadMoreBtn from "./components/loadMoreBtn/LoadMoreBtn";
 import toast from "react-hot-toast";
 import ImageModal from "./components/ImageModal/ImageModal";
+import { MagnifyingGlass } from "react-loader-spinner";
 
 // const YOUR_ACCESS_KEY = "XZStRBfACQP-q-kCXR0IJai0mE6pvomLOZZrclZrEPM";
 
@@ -66,19 +67,17 @@ const App = () => {
   return (
     <div>
       <SearchBar onHandleChangeQuery={handleChangeQuery} />
+      {isLoading && <Loader />}
+      {isError && <h2>Something went wrong! Try again...</h2>}
       <ImageGallery
         picture={picture}
         onImageClick={openModal}
       />
-      {isLoading && <Loader />}
-      {isError && <h2>Something went wrong! Try again...</h2>}
-
       <ImageModal
         isOpen={modalIsOpen}
         onClose={closeModal}
         picture={selectedPict}
       />
-
       {picture.length > 0 && (
         <LoadMoreBtn onHandleChangePage={handleChangePage} />
       )}
