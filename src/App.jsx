@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchArticles } from "./api";
 import ImageGallery from "./components/imageGallery/ImageGallery";
 import SearchBar from "./components/searchBar/SearchBar";
 import Loader from "./components/loader/Loader";
 import LoadMoreBtn from "./components/loadMoreBtn/LoadMoreBtn";
 import toast from "react-hot-toast";
+import ImageModal from "./components/ImageModal/ImageModal";
 
 // const YOUR_ACCESS_KEY = "XZStRBfACQP-q-kCXR0IJai0mE6pvomLOZZrclZrEPM";
 
@@ -14,6 +15,8 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [selectedPict, setSelectedPic] = useState({});
 
   useEffect(() => {
     if (!query) {
@@ -50,13 +53,35 @@ const App = () => {
     setPage(1);
   };
 
+  const openModal = (picture) => {
+    setIsOpen(true);
+    setSelectedPic(picture);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+    setSelectedPic(null);
+  };
+
   return (
     <div>
       <SearchBar onHandleChangeQuery={handleChangeQuery} />
-      {picture.length > 0 && <ImageGallery picture={picture} />}
+      <ImageGallery
+        picture={picture}
+        onImageClick={openModal}
+      />
       {isLoading && <Loader />}
       {isError && <h2>Something went wrong! Try again...</h2>}
-      <LoadMoreBtn onHandleChangePage={handleChangePage} />
+
+      <ImageModal
+        isOpen={modalIsOpen}
+        onClose={closeModal}
+        picture={selectedPict}
+      />
+
+      {picture.length > 0 && (
+        <LoadMoreBtn onHandleChangePage={handleChangePage} />
+      )}
     </div>
   );
 };

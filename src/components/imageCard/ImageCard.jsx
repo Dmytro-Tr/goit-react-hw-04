@@ -1,9 +1,10 @@
-const ImageCard = ({ urls, slug }) => {
+const ImageCard = ({ small, alt_description, onImageClick }) => {
   return (
     <div>
       <img
-        src={urls.small}
-        alt={slug}
+        src={small}
+        alt={alt_description}
+        onClick={onImageClick}
       />
     </div>
   );
