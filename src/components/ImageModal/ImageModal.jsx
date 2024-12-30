@@ -1,3 +1,5 @@
+import s from "./imageModal.module.css";
+
 import Modal from "react-modal";
 
 Modal.setAppElement("#root");
@@ -9,8 +11,9 @@ const ImageModal = ({ isOpen, onClose, picture }) => {
       onRequestClose={onClose}
       shouldCloseOnOverlayClick={true}
     >
-      <div>
+      <div className={s.imgBox}>
         <img
+          className={s.img}
           src={picture ? picture.modalPict : {}}
           alt={picture ? picture.altDescr : {}}
         />

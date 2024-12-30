@@ -1,4 +1,5 @@
 import { useState } from "react";
+import s from "./searchBar.module.css";
 
 const SearchBar = ({ onHandleChangeQuery }) => {
   const [value, setValue] = useState("");
@@ -10,8 +11,11 @@ const SearchBar = ({ onHandleChangeQuery }) => {
   };
 
   return (
-    <header>
-      <form onSubmit={handleSubmit}>
+    <header className={s.header}>
+      <form
+        onSubmit={handleSubmit}
+        className={s.form}
+      >
         <input
           onChange={(evt) => setValue(evt.target.value)}
           value={value}
@@ -19,12 +23,16 @@ const SearchBar = ({ onHandleChangeQuery }) => {
           autoComplete="off"
           autoFocus
           placeholder="Search images and photos"
+          className={s.input}
         />
         <button
           onClick={handleSubmit}
           type="submit"
+          className={s.button}
         >
-          Search
+          <svg className={s.svg}>
+            <use href="/src/svg/symbols.svg#icon-search"></use>
+          </svg>
         </button>
       </form>
     </header>

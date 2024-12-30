@@ -45,7 +45,7 @@ const App = () => {
 
   const handleChangeQuery = (newQuery) => {
     if (newQuery === query) {
-      toast.error("Enter text to search for images!");
+      toast.error("Enter new text to search for images!");
       return;
     }
     setQuery(newQuery);
