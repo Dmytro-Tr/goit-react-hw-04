@@ -6,7 +6,6 @@ import Loader from "./components/loader/Loader";
 import LoadMoreBtn from "./components/loadMoreBtn/LoadMoreBtn";
 import toast from "react-hot-toast";
 import ImageModal from "./components/ImageModal/ImageModal";
-import { MagnifyingGlass } from "react-loader-spinner";
 
 // const YOUR_ACCESS_KEY = "XZStRBfACQP-q-kCXR0IJai0mE6pvomLOZZrclZrEPM";
 
