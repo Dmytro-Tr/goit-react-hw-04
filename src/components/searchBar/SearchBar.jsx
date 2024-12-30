@@ -31,8 +31,7 @@ const SearchBar = ({ onHandleChangeQuery }) => {
           className={s.button}
         >
           <svg className={s.svg}>
-            <use href="../../svg/symbols.svg#icon-search"></use>
-            {/* <use href="/src/svg/symbols.svg#icon-search"></use> */}
+            <use href="/src/components/searchBar/symbols.svg#icon-search" />
           </svg>
         </button>
       </form>
