@@ -1,5 +1,6 @@
 import { useState } from "react";
 import s from "./searchBar.module.css";
+import { Search } from "lucide-react";
 
 const SearchBar = ({ onHandleChangeQuery }) => {
   const [value, setValue] = useState("");
@@ -30,9 +31,7 @@ const SearchBar = ({ onHandleChangeQuery }) => {
           type="submit"
           className={s.button}
         >
-          <svg className={s.svg}>
-            <use href="/src/components/searchBar/symbols.svg#icon-search" />
-          </svg>
+          <Search className={s.icon} />
         </button>
       </form>
     </header>
@@ -40,3 +39,5 @@ const SearchBar = ({ onHandleChangeQuery }) => {
 };
 
 export default SearchBar;
+
+// #icon-search
