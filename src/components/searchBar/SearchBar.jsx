@@ -1,12 +1,17 @@
 import { useState } from "react";
 import s from "./searchBar.module.css";
 import { Search } from "lucide-react";
+import toast from "react-hot-toast";
 
 const SearchBar = ({ onHandleChangeQuery }) => {
   const [value, setValue] = useState("");
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    if (value === "") {
+      toast.error("The search field is empty!");
+      return;
+    }
     onHandleChangeQuery(value);
     // console.log(value);
   };

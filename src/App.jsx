@@ -22,6 +22,7 @@ const App = () => {
     if (!query) {
       return;
     }
+
     const findThePicture = async () => {
       try {
         setIsLoading(true);
