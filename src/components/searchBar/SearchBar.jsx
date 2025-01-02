@@ -8,7 +8,7 @@ const SearchBar = ({ onHandleChangeQuery }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    if (value === "") {
+    if (value === "" || value === " ") {
       toast.error("The search field is empty!");
       return;
     }
